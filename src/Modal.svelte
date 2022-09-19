@@ -1,12 +1,13 @@
 <script>
-    let showModal = true;
-    let isPromo = true;
+    export let showModal = false;
+    export let isPromo = false;
 </script>
 
 {#if showModal}
-    <div class="backdrop" class:promo={isPromo}>
+    <div class="backdrop" class:promo={isPromo} on:click|self>
         <div class="modal">
-            <p>Sign up for offers!</p>
+            <slot />
+            <slot name="title" />
         </div>
     </div>
 {/if}
@@ -22,7 +23,7 @@
     .modal {
         padding: 10px;
         border-radius: 10px;
-        max-width: 40px;
+        max-width: 400px;
         margin: 10% auto;
         text-align: center;
         background: white;
